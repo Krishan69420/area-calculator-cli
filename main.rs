@@ -1,5 +1,6 @@
 use std::io;
 
+
 enum Shape{
     Rectangle,
     Square,
@@ -67,7 +68,8 @@ fn read_number(prompt: &str) -> f64 {
         io::stdin().read_line(&mut input).expect("Failed to read");
 
         match input.trim().parse::<f64>() {
-            Ok(num) => return num,
+            Ok(num)if num > 0.0 => return num,
+            Ok(_) => println!("VAlue must be Greater than 0.0"),
             Err(_) => println!("Please enter a valid number."),
         }
     }
